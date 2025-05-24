@@ -1,0 +1,7 @@
+fastapi
+langchain
+langchain-google-genai
+amadeus
+uvicorn
+pydantic
+pydantic_settings
