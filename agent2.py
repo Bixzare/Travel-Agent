@@ -6,7 +6,7 @@ from langchain.agents import create_tool_calling_agent, AgentExecutor
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationChain
 from pydantic import BaseModel
-from tools import collect_flight_info,collect_passenger_info,get_airport_code, search_flights,infer_carry_on
+from tools import collect_flight_info,collect_passenger_info,get_airport_code, search_flights
 from datetime import date
 
 today = date.today()

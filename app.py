@@ -30,6 +30,9 @@ class AgentResponse(BaseModel):
     execution_time: Optional[float] = None
 
 # @app.post("/agent", response_model = AgentResponse)
+@app.get("/")
+def read_root():
+    return {"message": "Travel Assistant Backend Working!"}
 
 @app.post("/agent")
 

@@ -4,9 +4,8 @@ import os
 from dotenv import load_dotenv
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationChain
 from pydantic import BaseModel
-from tools import collect_flight_info,collect_passenger_info,get_airport_code, search_flights
+from tools import collect_flight_info,collect_passenger_info, search_flights,get_airport_code
 from datetime import date
 from system_prompt import system_message
 
@@ -53,7 +52,7 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-tools = [collect_flight_info,collect_passenger_info,get_airport_code, search_flights]
+tools = [collect_flight_info,collect_passenger_info,search_flights,get_airport_code]
 
 memory = ConversationBufferMemory(
     memory_key="chat_history", return_messages=True

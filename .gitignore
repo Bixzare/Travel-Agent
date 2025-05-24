@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.eggs/
+dist/
+build/
+sdist/
+xdist/
+*.egg-info/
+*.whl
+*.tar.gz
+MANIFEST
+
+# Environments
+.venv/
+venv/
+env/
+ENV/
+*.log
+
+# PyInstaller
+#  Often these are written to the current system temp directory
+#_MEIPASS*
+#  Uncomment to also exclude the dist folder
+# /dist/
+#  Uncomment to also exclude the build folder
+# /build/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Spyder related
+.spyderproject
+.spyder-py3
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS or Editor folders
+.DS_Store

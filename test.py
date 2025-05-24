@@ -4,6 +4,7 @@ from typing import Optional, List, Dict, Any
 import json
 from dotenv import load_dotenv
 from datetime import datetime
+from util import parse_flight_offer, parse_pricing_offer
 load_dotenv()
 amadeus_api_key = os.getenv("AMADEUS_API_KEY")
 amadeus_api_secret = os.getenv("AMADEUS_API_SECRET")
@@ -35,10 +36,11 @@ def search_flights(
             "originLocationCode": origin,
             "destinationLocationCode": destination,
             "departureDate": departure_date,
-            "adults": adults,
+            "adults": int(adults),
             "currencyCode": currency,
             "max": max_results,
-            "travelClass": cabin_class
+            "travelClass": cabin_class,
+            "nonStop": "true"
         }
         
         # Add return date if it's a round trip
@@ -48,6 +50,7 @@ def search_flights(
         # Get search results from Amadeus
         response = amadeus.shopping.flight_offers_search.get(**search_params)
         flight_offers = response.data
+        
         return flight_offers
 
     except ResponseError as error:
@@ -89,18 +92,24 @@ def get_flight_details(flight_offer: dict) -> dict:
         return {"error": str(error)}
         
 
-
 if __name__ == "__main__":
+
+    
     data = search_flights(
-        origin="JFK",
-        destination="DEN",
-        departure_date="2025-10-26",  # Future date
+        origin="LAX",
+        destination="JFK",
+        departure_date="2025-05-30",  # Future date
         adults=1,
         cabin_class="ECONOMY",
         direct_only=False,
         max_results=1
     )
-    print(data)
+
+    print(parse_pricing_offer(get_flight_details(data)))
+    # print(data[0])
+    # print("raw",data[0])
+    # print("parsed",parse_flight_offer(data[0]))
+    # print(extract_flight_summary(data[0]))
     
     # bag = get_flight_details(data[0])
 
