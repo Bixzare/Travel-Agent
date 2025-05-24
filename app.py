@@ -14,7 +14,6 @@ app = FastAPI(title="Agent API", description="API for an intelligent agent", ver
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allows all origins, replace "*" with specific origins if needed
-    allow_credentials=True,
     allow_methods=["POST","GET"],  # HTTP methods (GET, POST, etc.) or specifiy
     allow_headers=["*"],  # Allow all headers or specify
 )
